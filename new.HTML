@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twin Gift Hub</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  .fade-in { animation: fadeIn 0.8s ease-in-out; }
+  @keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+  }
+</style>
+</head>
+
+<body class="bg-pink-50 text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white shadow sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+      <img src="https://1drv.ms/i/c/47c96008d2a20f78/IQQsFKwPDCp2Q6tRdrzKe42ZAWknRVmYf6ay8rx4Q-C2ltE" class="w-10 h-10 object-contain">
+    </div>
+
+    <h1 class="text-2xl font-bold text-pink-600">Twin Gift Hub</h1>
+    <div class="flex gap-4">
+      <a href="#products" class="hover:text-pink-500">Products</a>
+      <a href="#about" class="hover:text-pink-500">About</a>
+      <a href="#contact" class="hover:text-pink-500">Contact</a>
+      <a href="https://wa.me/94702243726" class="bg-green-500 text-white px-4 py-2 rounded">WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-center py-20">
+  <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in">Welcome to Twin Gift Hub 🎁</h2>
+  <p class="mb-6 fade-in">Order easily through WhatsApp</p>
+  <a href="#products" class="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
+    Shop Now
+  </a>
+</section>
+
+<!-- FILTER -->
+<section class="py-10 text-center">
+  <h2 class="text-2xl font-bold mb-6">Our Collection</h2>
+  <div class="flex flex-wrap justify-center gap-3">
+    <button onclick="filterProducts('all')" class="filter-btn bg-pink-500 text-white px-4 py-2 rounded">All</button>
+    <button onclick="filterProducts('Bracelets')" class="filter-btn bg-white px-4 py-2 rounded shadow">Bracelets</button>
+    <button onclick="filterProducts('Hair Clips')" class="filter-btn bg-white px-4 py-2 rounded shadow">Hair Clips</button>
+    <button onclick="filterProducts('Hair Bands')" class="filter-btn bg-white px-4 py-2 rounded shadow">Hair Bands</button>
+    <button onclick="filterProducts('Keytags')" class="filter-btn bg-white px-4 py-2 rounded shadow">Keytags</button>
+    <button onclick="filterProducts('Gift Boxes')" class="filter-btn bg-white px-4 py-2 rounded shadow">Gift Boxes</button>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="py-16">
+  <div class="container mx-auto px-4">
+    <div id="product-list" class="grid md:grid-cols-3 gap-8"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-16 bg-white text-center">
+  <h2 class="text-3xl font-bold mb-4">About Us</h2>
+  <p class="max-w-xl mx-auto text-gray-600">
+    Twin Gift Hub is your go-to place for cute and stylish gifts. 
+    We specialize in bracelets, hair accessories, and custom keytags. 
+    Order easily via WhatsApp and get your items delivered fast!
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-16 text-center">
+  <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+  <p class="mb-4">Click below to order via WhatsApp</p>
+  <a href="https://wa.me/94702243726" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg">
+    Chat on WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-white text-center py-6">
+  <p>© 2026 Twin Gift Hub | Online shopping</p>
+</footer>
+
+<script>
+const phoneNumber = "94702243726";
+
+const products = [
+  { name: "Ligh colour Bracelet", price: 199.99, category: "Bracelets", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQS4QqN0u_4oQpinpohEQpmIAT0sHn8djAuj20lmATPo5b0?width=960&height=1280" },
+  { name: "Cute Bracelet", price: 199.99, category: "Bracelets", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQQGqT17-fZwS7iPMK1phfqZAbG-sGlux684BuLPJf-Irw8?width=1160&height=868"},
+  { name: "Butterfly Hair Clip", price: 549.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQR4yb9EHVgjQpK00v1_Wv5EAVhxYleHOHBN5D6GDjgmd80?width=1280&height=960" },
+  { name: "Flower Hair Clip", price: 399.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQRqF0mqAygMSqtYr-DhH6jnAXO7nfaYcVSce7qor84gzh0?width=960&height=1280" },
+  { name: "Printed Flower Hair Clip(large)", price: 179.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQQLhckrkOe1SKUMYk5xrUrWAc0BtsyaPU2qxQgV7VkojFU?width=1280&height=1132" },
+  { name: "Printed Flower Hair Clip(medium)", price: 149.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQT0LKk1b0skToOng1a0ajr6AXXKVzFHBtjjCeGPqJO4DjE?width=1280&height=960" },
+  { name: "Printed Flower Hair Clip(medium)", price: 149.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQSXxbPRdhTuQoIDl_FlbhIGARxschSe3gyjANyD-CFQJVc?width=1280&height=960" },
+  { name: "Printed Flower Hair Clip(small)", price: 99.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQStm7Ya3rC4RaDYY-vqn0EPAYCz3SL-DW3QfJ9V6Fb6M-s?width=1280&height=1038" },
+  { name: "Printed Flower Hair Clip(small)", price: 129.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQSQDuFotPUpQrnzDee5u8kLAeSEbwIbyiXvvMHz4wdOj5k?width=1280&height=960" },
+  { name: "Pretty Hair Clip", price: 419.99, category: "Hair Clips", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQSb4PCg3BjTTK4USyftHp3qAZOl6yt2QJX6ubMFhRvHUls?width=539&height=692" },
+  { name: "Stylish Hair Band", price: 229.99, category: "Hair Bands", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQTxUKcd9AkATIaDCdq_roW1AavylOiDgJVYuT2RXKyeKwA" },
+  { name: "Keytag", price: 149.99, category: "Keytags", image: "https://1drv.ms/i/c/47c96008d2a20f78/IQTWPHq7ntN0T7uWrAoBvmpoAZ_9f6Dg8X2j1ixzArYUruw?width=407&height=383" },
+];
+
+function renderProducts(list) {
+  const container = document.getElementById("product-list");
+
+  container.innerHTML = list.map(p => {
+    const message = encodeURIComponent(
+      `_Helloo *Twin Gift Hub..!*_ 
+I want to order: *${p.name}* 
+Price: ~Rs.${p.price}~`
+    );
+
+    return `
+      <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 fade-in">
+        <img src="${p.image}" class="w-full h-60 object-cover rounded mb-4">
+        <h3 class="font-bold text-lg">${p.name}</h3>
+        <p class="text-gray-500">${p.category}</p>
+        <p class="text-pink-600 font-bold mb-3">Rs.${p.price}</p>
+
+        <a href="https://wa.me/${phoneNumber}?text=${message}"
+           class="block text-center bg-green-500 text-white py-2 rounded hover:bg-green-600">
+           Order via WhatsApp
+        </a>
+      </div>
+    `;
+  }).join("");
+}
+
+function filterProducts(category) {
+  if (category === "all") {
+    renderProducts(products);
+  } else {
+    renderProducts(products.filter(p => p.category === category));
+  }
+}
+
+// load
+renderProducts(products);
+</script>
+
+</body>
+</html>
